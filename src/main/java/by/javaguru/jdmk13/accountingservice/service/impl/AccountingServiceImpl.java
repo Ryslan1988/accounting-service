@@ -33,7 +33,7 @@ public class AccountingServiceImpl implements AccountingService {
         String readString = Files.readString(Paths.get(filePath));
         if (StringUtils.isBlank(readString)) {
             AccountingResponseDto accountingResponseDto = new AccountingResponseDto(
-                    random.nextInt(), id, Math.random() < 0.5);
+                    random.nextInt(101), id, Math.random() < 0.5);
             objectMapper.writeValue(new File(filePath), List.of(accountingResponseDto));
             return accountingResponseDto;
         }
@@ -46,7 +46,7 @@ public class AccountingServiceImpl implements AccountingService {
         }
 
         AccountingResponseDto accountingResponseDto = new AccountingResponseDto(
-                random.nextInt(), id, Math.random() < 0.5);
+                random.nextInt(101), id, Math.random() < 0.5);
         List<AccountingResponseDto> resList = new ArrayList<>(accountingResponseDtos);
         resList.add(accountingResponseDto);
 
