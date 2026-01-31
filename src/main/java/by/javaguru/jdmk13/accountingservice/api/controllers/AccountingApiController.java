@@ -8,8 +8,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,26 +22,29 @@ import java.io.IOException;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
-@Tag(name = "About Controller")
+@Tag(name = "Allocated budget")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1/accounting/allocation")
+@Slf4j
 public class AccountingApiController {
 
     private final AccountingServiceImpl accountingService;
 
-    @Operation(summary = "Get about from CV")
+    @Operation(summary = "Get allocated budget")
     @ApiResponse(
             responseCode = "201",
             description = "CREATED",
             content = @Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = String.class)))
-    @ApiResponse(responseCode = "401", description = "UNAUTHORIZED - no token provided")
     @ApiResponse(responseCode = "400", description = "BAD REQUEST - Invalid input data")
     @PostMapping
-    public ResponseEntity<AccountingResponseDto> allocation(@RequestBody @Valid AccountingRequestDto requestDto) throws IOException {
+    public ResponseEntity<AccountingResponseDto> allocation(@RequestBody AccountingRequestDto requestDto) throws IOException {
+        log.debug("Received allocation request: {}", requestDto);
         AccountingResponseDto accountingResponseDto = accountingService.getMockJsonById(requestDto);
+        log.debug("Response allocation request: {}", accountingResponseDto);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(accountingResponseDto);
     }
+
 }
