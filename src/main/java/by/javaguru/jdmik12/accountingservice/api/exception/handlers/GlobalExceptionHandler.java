@@ -1,6 +1,6 @@
-package by.javaguru.jdmk13.accountingservice.api.exception.handlers;
+package by.javaguru.jdmik12.accountingservice.api.exception.handlers;
 
-import by.javaguru.jdmk13.accountingservice.api.exception.ErrorResponse;
+import by.javaguru.jdmik12.accountingservice.api.exception.ErrorResponse;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.ws.rs.BadRequestException;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
-package by.javaguru.jdmk13.accountingservice.utils;
+package by.javaguru.jdmik12.accountingservice.utils;
 
-import by.javaguru.jdmk13.accountingservice.model.AccountingResponseDto;
+import by.javaguru.jdmik12.accountingservice.model.AccountingResponseDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micrometer.common.util.StringUtils;
 import org.springframework.stereotype.Component;

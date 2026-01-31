@@ -1,4 +1,4 @@
-package by.javaguru.jdmk13.accountingservice;
+package by.javaguru.jdmik12.accountingservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

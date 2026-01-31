@@ -8,7 +8,7 @@
         <version>3.4.1</version>
         <relativePath/>
     </parent>
-    <groupId>by.javaguru.jdmk13</groupId>
+    <groupId>by.javaguru.jdmik12</groupId>
     <artifactId>accounting-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>accounting-service</name>
@@ -30,7 +30,7 @@
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.projectlombok>1.18.24</org.projectlombok>
-        <springdoc-openapi-starter-webmvc-ui.version>2.0.2</springdoc-openapi-starter-webmvc-ui.version>
+        <springdoc-openapi-starter-webmvc-ui.version>2.7.0</springdoc-openapi-starter-webmvc-ui.version>
         <spring-cloud.version>2024.0.0</spring-cloud.version>
         <spring-cloud-starter-netflix-eureka-client>4.0.4</spring-cloud-starter-netflix-eureka-client>
     </properties>

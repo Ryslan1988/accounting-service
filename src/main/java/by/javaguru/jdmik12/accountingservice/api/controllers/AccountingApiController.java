@@ -1,8 +1,8 @@
-package by.javaguru.jdmk13.accountingservice.api.controllers;
+package by.javaguru.jdmik12.accountingservice.api.controllers;
 
-import by.javaguru.jdmk13.accountingservice.model.AccountingRequestDto;
-import by.javaguru.jdmk13.accountingservice.model.AccountingResponseDto;
-import by.javaguru.jdmk13.accountingservice.service.impl.AccountingServiceImpl;
+import by.javaguru.jdmik12.accountingservice.service.impl.AccountingServiceImpl;
+import by.javaguru.jdmik12.accountingservice.model.AccountingRequestDto;
+import by.javaguru.jdmik12.accountingservice.model.AccountingResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -1,4 +1,4 @@
-package by.javaguru.jdmk13.accountingservice.model;
+package by.javaguru.jdmik12.accountingservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountingResponseDto {
-    private long id;
+public class AccountingRequestDto {
     private long requestId;
-    private boolean allocated;
+    private String type;
+    private double budget;
 }

@@ -1,4 +1,4 @@
-package by.javaguru.jdmk13.accountingservice.api.exception;
+package by.javaguru.jdmik12.accountingservice.api.exception;
 
 import java.time.ZonedDateTime;
 
