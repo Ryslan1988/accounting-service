@@ -1,9 +1,11 @@
-package by.javaguru.jdmk13.accountingservice;
+package by.javaguru.jdmik12.accountingservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class AccountingServiceApplication {
 
     public static void main(String[] args) {
