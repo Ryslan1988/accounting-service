@@ -17,7 +17,7 @@ import java.io.IOException;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-@KafkaListener(topics = "${integration.kafka.producer.accounting.topic.name}", containerFactory = "kafkaListenerContainerFactory")
+@KafkaListener(topics = "${integration.kafka.consumer.accounting.topic.name}", containerFactory = "kafkaListenerContainerFactory")
 public class AccountingCommandHandler {
     private final AccountingService accountingService;
     private final AllocateProducerClient allocateProducerClient;
