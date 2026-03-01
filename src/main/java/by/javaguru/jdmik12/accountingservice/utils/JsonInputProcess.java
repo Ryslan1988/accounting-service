@@ -27,17 +27,17 @@ public class JsonInputProcess {
                     random.nextInt(101), id, Math.random() < 0.5);
             objectMapper.writeValue(new File(FILE_PATCH), List.of(accountingResponseDto));
             return AllocateBudgetEvent.builder()
-                    .withRequestId(accountingResponseDto.getRequestId())
-                    .withAllocated(accountingResponseDto.isAllocated())
+                    .withRequestId(accountingResponseDto.requestId())
+                    .withAllocated(accountingResponseDto.allocated())
                     .build();
         }
         List<AccountingResponseDto> accountingResponseDtoList = List.of(objectMapper.readValue(readString, AccountingResponseDto[].class));
 
         for (AccountingResponseDto responseDto : accountingResponseDtoList) {
-            if (responseDto.getRequestId() == id) {
+            if (responseDto.requestId() == id) {
                 return AllocateBudgetEvent.builder()
-                        .withRequestId(responseDto.getRequestId())
-                        .withAllocated(responseDto.isAllocated())
+                        .withRequestId(responseDto.requestId())
+                        .withAllocated(responseDto.allocated())
                         .build();
             }
         }
@@ -50,8 +50,8 @@ public class JsonInputProcess {
         objectMapper.writeValue(new File(FILE_PATCH), resList);
 
         return AllocateBudgetEvent.builder()
-                .withRequestId(accountingResponseDto.getRequestId())
-                .withAllocated(accountingResponseDto.isAllocated())
+                .withRequestId(accountingResponseDto.requestId())
+                .withAllocated(accountingResponseDto.allocated())
                 .build();
     }
 }

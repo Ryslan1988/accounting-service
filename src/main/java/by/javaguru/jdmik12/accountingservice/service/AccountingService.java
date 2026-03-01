@@ -1,6 +1,5 @@
 package by.javaguru.jdmik12.accountingservice.service;
 
-import by.javaguru.jdmik12.accountingservice.model.AccountingResponseDto;
 import by.javaguru.jdmik12.common.accounting.message.event.AllocateBudgetEvent;
 
 import java.io.IOException;
