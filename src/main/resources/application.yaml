@@ -24,7 +24,7 @@ integration:
     consumer:
       accounting.topic.name: jdmik12.accounting.allocation.command
     producer:
-      dlt.topic.name: jdmik12.recruitment.dlt.command
+      dlt.topic.name: jdmik12.recruitment-pr.dlt.command
 
 eureka:
   client:
