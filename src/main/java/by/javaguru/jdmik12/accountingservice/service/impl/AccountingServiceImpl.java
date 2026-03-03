@@ -1,9 +1,8 @@
 package by.javaguru.jdmik12.accountingservice.service.impl;
 
 import by.javaguru.jdmik12.accountingservice.service.AccountingService;
-import by.javaguru.jdmik12.accountingservice.model.AccountingRequestDto;
-import by.javaguru.jdmik12.accountingservice.model.AccountingResponseDto;
 import by.javaguru.jdmik12.accountingservice.utils.JsonInputProcess;
+import by.javaguru.jdmik12.common.accounting.message.event.AllocateBudgetEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +14,8 @@ public class AccountingServiceImpl implements AccountingService {
     private final JsonInputProcess jsonInputProcess;
 
     @Override
-    public AccountingResponseDto getMockJsonById(AccountingRequestDto requestDto) throws IOException {
-        return jsonInputProcess.jsonFileProcessUpdater(requestDto.getRequestId());
+    public AllocateBudgetEvent getMockJsonById(long requestId) throws IOException {
+        return jsonInputProcess.jsonFileProcessUpdater(requestId);
     }
 
 }
