@@ -24,7 +24,7 @@ integration:
     consumer:
       accounting.topic.name: jdmik12.accounting.allocation.command
     producer:
-      dlt.topic.name: jdmik12.recruitment-pr.command.dlt
+      dlt.topic.name: jdmik12.accounting.command.dlt
     accounting-command-topic:
       name: jdmik12.accounting.command
       partitions: 3
