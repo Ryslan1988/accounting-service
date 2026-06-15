@@ -1,6 +1,6 @@
 package by.javaguru.jdmik12.accountingservice.listener;
 
-import by.javaguru.jdmik12.common.base.KafkaMessage;
+import by.javaguru.jdmik12.accountingservice.model.message.KafkaMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;

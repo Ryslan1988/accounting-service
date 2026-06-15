@@ -1,57 +1,44 @@
 package by.javaguru.jdmik12.accountingservice.utils;
 
-import by.javaguru.jdmik12.accountingservice.model.AccountingResponseDto;
-import by.javaguru.jdmik12.common.accounting.message.event.AllocateBudgetEvent;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.micrometer.common.util.StringUtils;
+import by.javaguru.jdmik12.accountingservice.model.entity.User;
+import by.javaguru.jdmik12.accountingservice.model.message.event.AllocateBudgetEvent;
+import by.javaguru.jdmik12.accountingservice.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 @Component
+@RequiredArgsConstructor
 public class JsonInputProcess {
-    private final String FILE_PATCH = "src/main/resources/data.json";
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final UserRepository userRepository;
     private final Random random = new Random();
 
-    public AllocateBudgetEvent jsonFileProcessUpdater(long id) throws IOException {
-        String readString = Files.readString(Paths.get(FILE_PATCH));
-        if (StringUtils.isBlank(readString)) {
-            AccountingResponseDto accountingResponseDto = new AccountingResponseDto(
-                    random.nextInt(101), id, Math.random() < 0.5);
-            objectMapper.writeValue(new File(FILE_PATCH), List.of(accountingResponseDto));
+    public AllocateBudgetEvent jsonFileProcessUpdaterFromMongo(long id) {
+        List<User> byRequestId = userRepository.findByRequestId(String.valueOf(id));
+
+        if (byRequestId.isEmpty()) {
+            User user = User.builder()
+                    .id(String.valueOf(random.nextInt(1000001)))
+                    .requestId(String.valueOf(id))
+                    .allocated(String.valueOf(Math.random() < 0.5))
+                    .build();
+            userRepository.save(user);
+
             return AllocateBudgetEvent.builder()
-                    .withRequestId(accountingResponseDto.requestId())
-                    .withAllocated(accountingResponseDto.allocated())
+                    .withId(user.getId())
+                    .withRequestId(user.getRequestId())
+                    .withAllocated(user.getAllocated())
+                    .build();
+        } else {
+            User firstUser = byRequestId.stream().findFirst().get();
+            return AllocateBudgetEvent.builder()
+                    .withId(firstUser.getId())
+                    .withRequestId(firstUser.getRequestId())
+                    .withAllocated(firstUser.getAllocated())
                     .build();
         }
-        List<AccountingResponseDto> accountingResponseDtoList = List.of(objectMapper.readValue(readString, AccountingResponseDto[].class));
 
-        for (AccountingResponseDto responseDto : accountingResponseDtoList) {
-            if (responseDto.requestId() == id) {
-                return AllocateBudgetEvent.builder()
-                        .withRequestId(responseDto.requestId())
-                        .withAllocated(responseDto.allocated())
-                        .build();
-            }
-        }
-
-        AccountingResponseDto accountingResponseDto = new AccountingResponseDto(
-                random.nextInt(101), id, Math.random() < 0.5);
-        List<AccountingResponseDto> resList = new ArrayList<>(accountingResponseDtoList);
-        resList.add(accountingResponseDto);
-
-        objectMapper.writeValue(new File(FILE_PATCH), resList);
-
-        return AllocateBudgetEvent.builder()
-                .withRequestId(accountingResponseDto.requestId())
-                .withAllocated(accountingResponseDto.allocated())
-                .build();
     }
 }

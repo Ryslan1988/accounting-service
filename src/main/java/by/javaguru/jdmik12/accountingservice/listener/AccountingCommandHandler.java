@@ -1,8 +1,8 @@
 package by.javaguru.jdmik12.accountingservice.listener;
 
+import by.javaguru.jdmik12.accountingservice.model.message.command.AllocateBudgetCommand;
+import by.javaguru.jdmik12.accountingservice.model.message.event.AllocateBudgetEvent;
 import by.javaguru.jdmik12.accountingservice.service.AccountingService;
-import by.javaguru.jdmik12.common.accounting.message.command.AllocateBudgetCommand;
-import by.javaguru.jdmik12.common.accounting.message.event.AllocateBudgetEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaHandler;

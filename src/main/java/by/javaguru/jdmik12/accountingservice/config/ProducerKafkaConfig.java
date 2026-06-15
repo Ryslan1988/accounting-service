@@ -1,6 +1,6 @@
 package by.javaguru.jdmik12.accountingservice.config;
 
-import by.javaguru.jdmik12.common.base.KafkaMessage;
+import by.javaguru.jdmik12.accountingservice.model.message.KafkaMessage;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
